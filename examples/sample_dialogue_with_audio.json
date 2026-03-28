@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "RAG 是啥？",
+    "source_doc": "sample_doc.md",
+    "video_config": { "fps": 30, "width": 1080, "height": 1920, "theme": "tech-dark" },
+    "total_frames": 1890,
+    "total_duration_sec": 57.0
+  },
+  "characters": {
+    "questioner": {
+      "id": "bunny", "name": "小白", "voice": "zh-CN-XiaoxiaoNeural", "screen_anchor": "bottom-left"
+    },
+    "answerer": {
+      "id": "fox", "name": "大橘", "voice": "zh-CN-YunxiNeural", "screen_anchor": "top-right"
+    }
+  },
+  "exchanges": [
+    {
+      "id": "ex_01",
+      "speaker": "bunny",
+      "text": "大橘，我老听人说 RAG，这到底是啥玩意儿啊？",
+      "emotion": "curious",
+      "transition_in": "slide-diagonal",
+      "keywords": [],
+      "audio": { "file": "output/audio/ex_01.mp3", "duration_sec": 4.2, "duration_frames": 126 }
+    },
+    {
+      "id": "ex_02",
+      "speaker": "fox",
+      "text": "RAG 嘛，就是让大模型先去「查资料」再回答，知识可以随时更新，不用重新训练！",
+      "emotion": "explaining",
+      "transition_in": "slide-diagonal",
+      "keywords": [
+        { "text": "检索增强生成", "style": "highlight-card", "appear_at_sec": 1.2 },
+        { "text": "无需重训", "style": "pop-badge", "appear_at_sec": 3.0 }
+      ],
+      "audio": { "file": "output/audio/ex_02.mp3", "duration_sec": 6.5, "duration_frames": 195 }
+    },
+    {
+      "id": "ex_03",
+      "speaker": "bunny",
+      "text": "那它是怎么「查资料」的呢？",
+      "emotion": "curious",
+      "transition_in": "slide-diagonal",
+      "keywords": [],
+      "audio": { "file": "output/audio/ex_03.mp3", "duration_sec": 2.8, "duration_frames": 84 }
+    },
+    {
+      "id": "ex_04",
+      "speaker": "fox",
+      "text": "分三步：先检索、再增强、最后生成。把找到的资料和你的问题一起喂给大模型，答案就靠谱多了！",
+      "emotion": "explaining",
+      "transition_in": "slide-diagonal",
+      "keywords": [
+        { "text": "① 检索", "style": "timeline-node", "appear_at_sec": 0.8 },
+        { "text": "② 增强", "style": "timeline-node", "appear_at_sec": 1.8 },
+        { "text": "③ 生成", "style": "timeline-node", "appear_at_sec": 2.8 }
+      ],
+      "audio": { "file": "output/audio/ex_04.mp3", "duration_sec": 7.2, "duration_frames": 216 }
+    },
+    {
+      "id": "ex_05",
+      "speaker": "bunny",
+      "text": "明白了！那 RAG 最大的优点是啥？",
+      "emotion": "curious",
+      "transition_in": "slide-diagonal",
+      "keywords": [],
+      "audio": { "file": "output/audio/ex_05.mp3", "duration_sec": 3.0, "duration_frames": 90 }
+    },
+    {
+      "id": "ex_06",
+      "speaker": "fox",
+      "text": "三个字：降幻觉！大模型有了参考书，就不会乱编了。而且知识库随时能更新，不用动模型本身。",
+      "emotion": "explaining",
+      "transition_in": "slide-diagonal",
+      "keywords": [
+        { "text": "降低幻觉", "style": "highlight-card", "appear_at_sec": 1.0 },
+        { 
+          "text": "Embedding 向量",
+          "style": "definition-card",
+          "appear_at_sec": 3.5,
+          "description": "将文本语义转化为数字向量，让相似内容靠近"
+        }
+      ],
+      "audio": { "file": "output/audio/ex_06.mp3", "duration_sec": 7.0, "duration_frames": 210 }
+    }
+  ],
+  "ending": {
+    "type": "summary-card",
+    "title": "今日学到了 ✨",
+    "points": ["检索增强生成 (RAG)", "三步走：检索→增强→生成", "降幻觉 + 知识实时更新"],
+    "cta": "关注我，每天 1 分钟搞懂一个 AI 概念 🚀",
+    "duration_frames": 90
+  }
+}

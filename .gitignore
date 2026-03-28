@@ -1,0 +1,57 @@
+# ─── Python ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+venv/
+.venv/
+env/
+.env
+!.env.example
+
+# ─── Node / Remotion ──────────────────────────────────────
+node_modules/
+remotion-player/node_modules/
+remotion-player/.remotion/
+*.tsbuildinfo
+
+# ─── 生成产物（不提交到版本库）───────────────────────────
+output/
+!output/.gitkeep
+remotion-player/public/audio/
+
+# ─── LLM 调试文件 ─────────────────────────────────────────
+output/llm_raw.txt
+
+# ─── 角色图片（重量级，走 LFS 或另行分发）────────────────
+# remotion-player/public/characters/*.png
+# 若图片体积可接受可注释掉上一行
+
+# ─── 操作系统 ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+order.md
+
+# ─── IDE ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── 渲染中间文件 ─────────────────────────────────────────
+*.mp4
+*.mp3
+*.webm
+*.mov
+
+# ─── Remotion 渲染缓存 ────────────────────────────────────
+.cache/
