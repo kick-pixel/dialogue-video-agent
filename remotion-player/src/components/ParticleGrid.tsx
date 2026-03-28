@@ -1,6 +1,7 @@
-// 粒子网格背景 - 流动粒子点 + 连线
+// 粒子网格背景 v2 - 颜色从主题系统读取
 import React, { useMemo } from 'react';
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
+import type { Theme } from '../themes';
 
 interface Particle {
   x: number;
@@ -19,7 +20,7 @@ function seededRandom(seed: number): () => number {
   };
 }
 
-export const ParticleGrid: React.FC = () => {
+export const ParticleGrid: React.FC<{ theme: Theme }> = ({ theme }) => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
 
@@ -68,7 +69,7 @@ export const ParticleGrid: React.FC = () => {
           <line
             key={i}
             x1={l.x1} y1={l.y1} x2={l.x2} y2={l.y2}
-            stroke="#00FFD1"
+            stroke={theme.particleColor}
             strokeWidth={0.8}
             strokeOpacity={l.opacity}
           />
@@ -78,7 +79,7 @@ export const ParticleGrid: React.FC = () => {
           <circle
             key={i}
             cx={p.x} cy={p.y} r={p.size}
-            fill="#00FFD1"
+            fill={theme.particleColor}
             fillOpacity={p.opacity}
           />
         ))}

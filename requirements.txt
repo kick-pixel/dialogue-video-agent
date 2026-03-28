@@ -1,6 +1,15 @@
-openai>=1.0.0
-edge-tts>=6.1.9
-mutagen>=1.47.0
+# Python 依赖 - dialogue-video-agent
+# 安装: pip install -r requirements.txt
+
+# ─── LLM ───────────────────────────────────────────────────────
+openai>=1.30.0
 python-dotenv>=1.0.0
-aiofiles>=23.2.1
-asyncio
+pydantic>=2.0.0      # LLM 输出校验（可选但推荐）
+json-repair>=0.25.0  # LLM JSON 容错修复
+
+# ─── TTS ───────────────────────────────────────────────────────
+edge-tts>=6.1.12     # Edge TTS（免费）
+dashscope>=1.24.6    # 阿里云千问 TTS（可选）
+mutagen>=1.47.0      # MP3/WAV 时长读取
+
+# ─── 视频渲染（Node 端通过 npx remotion 调用，无需 pip）───────────────

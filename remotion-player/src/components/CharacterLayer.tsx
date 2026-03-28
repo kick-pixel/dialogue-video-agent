@@ -1,7 +1,10 @@
 // CharacterLayer v4 - 更小的圆形头像，在角落安静显示，不遮挡内容
 import React from 'react';
 import { AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { Exchange } from '../types';
+import type { Exchange, DialogueData } from '../types';
+import type { Theme } from '../themes';
+
+
 
 // 更小的尺寸，颜色鲜明的角落显示
 const CONFIG = {
@@ -21,13 +24,24 @@ const CONFIG = {
   },
 } as const;
 
-interface CharacterLayerProps { exchange: Exchange; }
+interface CharacterLayerProps {
+  exchange: Exchange;
+  characters?: DialogueData['characters'];  // 含 image 路径配置
+  theme: Theme;
+  isLandscape?: boolean;
+}
 
-export const CharacterLayer: React.FC<CharacterLayerProps> = ({ exchange }) => {
+export const CharacterLayer: React.FC<CharacterLayerProps> = ({ exchange, characters, theme }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
   const speaker = exchange.speaker as 'bunny' | 'fox';
   const cfg = CONFIG[speaker];
+
+  // 图片路径：优先使用 characters config，fallback 到默认
+  const charMeta = speaker === 'bunny'
+    ? characters?.questioner
+    : characters?.answerer;
+  const imageSrc = charMeta?.image ?? `characters/${speaker}.png`;
 
   const enter = spring({ fps, frame, config: { damping: 14, stiffness: 160, mass: 0.9 } });
   const exit  = interpolate(frame, [durationInFrames - 12, durationInFrames], [0, 1],
@@ -65,7 +79,7 @@ export const CharacterLayer: React.FC<CharacterLayerProps> = ({ exchange }) => {
           overflow: 'hidden', background: '#0B0E1A',
         }}>
           <Img
-            src={staticFile(`characters/${speaker}.png`)}
+            src={staticFile(imageSrc)}
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 10%' }}
           />
         </div>

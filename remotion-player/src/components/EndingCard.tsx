@@ -1,13 +1,15 @@
 // 结尾总结卡 - 纯内容版，不显示角色头像
 import React from 'react';
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
-import type { EndingCard as EndingCardType } from '../types';
+import type { Ending } from '../types';
+import type { Theme } from '../themes';
 
 interface EndingCardProps {
-  ending: EndingCardType;
+  ending: Ending;
+  theme: Theme;
 }
 
-export const EndingCard: React.FC<EndingCardProps> = ({ ending }) => {
+export const EndingCard: React.FC<EndingCardProps> = ({ ending, theme }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -59,7 +61,7 @@ export const EndingCard: React.FC<EndingCardProps> = ({ ending }) => {
         marginBottom: 80, width: '100%',
         alignItems: 'flex-start',
       }}>
-        {ending.points.map((pt, i) => {
+        {(ending.points ?? []).map((pt, i) => {
           const o = interpolate(frame, [18 + i * 8, 30 + i * 8], [0, 1], { extrapolateRight: 'clamp' });
           const x = interpolate(frame, [18 + i * 8, 30 + i * 8], [-50, 0], { extrapolateRight: 'clamp' });
           return (

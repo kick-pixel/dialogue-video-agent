@@ -44,7 +44,8 @@ class DialogueVideoRenderSkill:
             if not file_path:
                 continue
 
-            src = Path(file_path)
+            # 相对路径以 dialogue_path 所在目录（output/）为根解析
+            src = dialogue_path.parent / file_path
             if not src.exists():
                 print(f"    [警告] 音频文件不存在: {src}")
                 continue
